@@ -1,0 +1,31 @@
+.loader {
+  height: 100vh;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: none !important;
+  filter: blur(8px) !important;
+  -webkit-filter: blur(8px) !important;
+  /* background: rgb(236, 52, 49) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(236, 52, 49, 1) 26%,
+    rgba(249, 127, 19, 1) 100%
+  ) !important;*/
+}
+
+.loader-img {
+  width: 200px !important;
+  padding-bottom: 15px !important;
+}
+
+.profile-avatar {
+  border: 3px solid #f76531;
+  width: 100px;
+  height: 100px;
+  left: 14px;
+  /* bottom: 20px; */
+  position: relative;
+  display: flex;
+  border-radius: 50% !important;
+}

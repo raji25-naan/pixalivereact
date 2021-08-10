@@ -1,0 +1,30 @@
+.Footer-Left {
+  list-style: none !important;
+  display: flex !important;
+}
+.Footer-Left li {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  font-weight: 500 !important;
+}
+.Footer-Right {
+  display: flex !important;
+  list-style: none !important;
+  float: right !important;
+  padding-right: 25px !important;
+}
+
+@media screen and (max-width: 414px) {
+  .Footer-Left {
+    justify-content: center !important;
+    padding-left: 0% !important;
+    margin: auto !important;
+  }
+  .Footer-Right {
+    justify-content: center !important;
+    padding-left: 0px !important;
+    margin: auto !important;
+    float: none !important;
+    padding-right: 0px !important;
+  }
+}
