@@ -125,7 +125,7 @@ const Header = (props) => {
                         {userInfo?.user?.username ? (
                            <>
                               <a className="opts_account" href="#">
-                                 <img src={userInfo?.user?.avatar || require("../src/components/imgs/default.png")} alt="true" />
+                                 <img src={profile?.user?.avatar || require("../src/components/imgs/default.png")} alt="true" />
                               </a>
                               <div pix-dropdown="mode:click ; animation: pix-animation-slide-bottom-small" className="dropdown-notifications rounded">
                                  <a href="/Profile">

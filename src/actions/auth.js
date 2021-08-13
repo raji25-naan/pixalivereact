@@ -8,10 +8,10 @@ import { getFeeds } from './feeds';
 //Action Creators
 
 // New User SignUp
-export const signUp = (userData, history) => async(dispatch) => {
+export const signUp = (userData, history) => async (dispatch) => {
     try {
         const { data } = await api.signUp(userData);
-        if(data?.success) {
+        if (data?.success) {
 
             dispatch({ type: AUTH, data })
 
@@ -25,9 +25,9 @@ export const signUp = (userData, history) => async(dispatch) => {
                 title: data?.message + ' Please login',
                 showConfirmButton: false,
                 //timer: 1800
-              })
+            })
 
-              localStorage.clear();
+            localStorage.clear();
 
         } else {
             Swal.fire({
@@ -35,7 +35,7 @@ export const signUp = (userData, history) => async(dispatch) => {
                 title: data?.message,
                 showConfirmButton: false,
                 //timer: 1800
-              })
+            })
             //localStorage.clear();
         }
     } catch (error) {
@@ -44,10 +44,10 @@ export const signUp = (userData, history) => async(dispatch) => {
 }
 
 // Existing User Login via google / facebook Auth
-export const socialLogin = (email, history) => async(dispatch) => {
+export const socialLogin = (email, history) => async (dispatch) => {
     try {
         const { data } = await api.socialLogin(email);
-        if(data?.success) {
+        if (data?.success) {
 
             dispatch({ type: AUTH, data })
 
@@ -59,7 +59,7 @@ export const socialLogin = (email, history) => async(dispatch) => {
 
             dispatch(getFeeds());
 
-            localStorage.setItem('phone', false ); 
+            localStorage.setItem('phone', false);
 
             history.push('/Home')
 
@@ -69,17 +69,17 @@ export const socialLogin = (email, history) => async(dispatch) => {
                 title: data?.message,
                 showConfirmButton: false,
                 //timer: 2000
-              })
+            })
 
-              history.push('/signup')
+            history.push('/signup')
 
-              Swal.fire({
+            Swal.fire({
                 icon: 'success',
                 iconColor: '#f9751c',
                 title: data?.message,
                 showConfirmButton: false,
                 //timer: 2500
-              })
+            })
         }
     } catch (error) {
         console.log(error)
@@ -87,30 +87,31 @@ export const socialLogin = (email, history) => async(dispatch) => {
 }
 
 // user Login
-export const userLogin = (userData, history) => async(dispatch) => {
+export const userLogin = (userData, history) => async (dispatch) => {
     try {
         const { data } = await api.userLogin(userData);
-        if(data?.success) {
-            
-              dispatch({ type: AUTH, data })
+        if (data?.success) {
 
-              dispatch(getUserInfo());
+            dispatch({ type: AUTH, data })
 
-              dispatch(getTrendingPeople());
+            history.push('/Home');
 
-              dispatch(getSuggestedFriends());
+            dispatch(getUserInfo());
 
-              dispatch(getFeeds());
+            dispatch(getTrendingPeople());
 
-              history.push('/Home')
+            dispatch(getSuggestedFriends());
 
-              Swal.fire({
-                icon: 'success',
-                iconColor: '#f9751c',
-                title: data?.message,
-                showConfirmButton: false,
-                //timer: 2500
-              })
+            dispatch(getFeeds());
+
+
+            // Swal.fire({
+            //     icon: 'success',
+            //     iconColor: '#f9751c',
+            //     title: data?.message,
+            //     showConfirmButton: false,
+            //     //timer: 2500
+            // })
 
         } else {
             Swal.fire({
@@ -118,7 +119,7 @@ export const userLogin = (userData, history) => async(dispatch) => {
                 title: data?.message,
                 showConfirmButton: false,
                 timer: 2000
-              })
+            })
         }
     } catch (error) {
         console.log(error)

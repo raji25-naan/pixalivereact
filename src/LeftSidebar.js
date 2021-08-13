@@ -7,11 +7,11 @@ import { Avatar, Tooltip } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 
 const LeftSidebar = (props) => {
+  const profile = JSON.parse(localStorage.getItem('profile'));
   const dispatch = useDispatch()
   const userInfo = props.userInfo;
   const trend = props.trend;
   const suggested = props.suggest;
-  const profile = JSON.parse(localStorage.getItem('profile'));
   let token = profile?.token;
   const loader = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const loader2 = [1, 2, 3, 4, 5];
@@ -54,7 +54,7 @@ const LeftSidebar = (props) => {
               <div class="user-profile">
                 {userInfo?.user?.name ?
                   <img
-                    src={userInfo?.user?.avatar || require("../src/components/imgs/default.png")}
+                    src={profile?.user?.avatar || require("../src/components/imgs/default.png")}
                     class="unseen_story see_all_stories" alt
                   />
                   :

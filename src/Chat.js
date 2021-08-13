@@ -7,16 +7,16 @@ import ChatRightSidebar from './ChatRightSidebar';
 const Chat = (props) => {
     const user = props.userInfo;
 
-return (
-<div id="wrapper" className="pix-bg">
+    return (
+        <div id="wrapper" className="pix-bg">
 
-    <Header {...user}/>
-    <LeftSidebar {...props}/>
-    {/* <ChatRightSidebar /> */}
-    <ChatFeed/>
+            <Header {...user} />
+            {/* <LeftSidebar {...props}/> */}
+            {/* <ChatRightSidebar /> */}
+            <ChatFeed />
 
-</div>
-    
-);
+        </div>
+
+    );
 }
 export default Chat;

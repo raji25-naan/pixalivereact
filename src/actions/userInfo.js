@@ -1,5 +1,6 @@
 import { GETUSER, GETPEOPLE, SUGGESTFRIEND } from '../constants/actionTypes';
 import axios from 'axios';
+import { API } from '../api';
 import Swal from 'sweetalert2';
 
 export const getUserInfo = () => async (dispatch) => {
@@ -8,8 +9,8 @@ export const getUserInfo = () => async (dispatch) => {
         const profile = JSON.parse(localStorage.getItem('profile'));
         let id = profile?.user?._id;
         let token = profile?.token;
-        const { data } = await axios.get(
-            `http://test.pixalive.me/api/user/userInfo?user_id=${id}`, { headers: { "token": `Bearer ${token}` } }
+        const { data } = await API.get(
+            `/userInfo?user_id=${id}`, { headers: { "token": `Bearer ${token}` } }
         )
 
         dispatch({ type: GETUSER, data })
@@ -25,8 +26,8 @@ export const getTrendingPeople = () => async (dispatch) => {
         const profile = JSON.parse(localStorage.getItem('profile'));
         let id = profile?.user?._id;
         let token = profile?.token;
-        const { data } = await axios.get(
-            `http://test.pixalive.me/api/user/trendingPeople?user_id=${id}`, { headers: { "token": `Bearer ${token}` } }
+        const { data } = await API.get(
+            `/trendingPeople?user_id=${id}`, { headers: { "token": `Bearer ${token}` } }
         )
 
         dispatch({ type: GETPEOPLE, data })
@@ -42,8 +43,8 @@ export const getSuggestedFriends = () => async (dispatch) => {
         const profile = JSON.parse(localStorage.getItem('profile'));
         let id = profile?.user?._id;
         let token = profile?.token;
-        const { data } = await axios.get(
-            `http://test.pixalive.me/api/user/trendingPeople?suggestion=true`, { headers: { "token": `Bearer ${token}` } }
+        const { data } = await API.get(
+            `/trendingPeople?suggestion=true`, { headers: { "token": `Bearer ${token}` } }
         )
 
         dispatch({ type: SUGGESTFRIEND, data })

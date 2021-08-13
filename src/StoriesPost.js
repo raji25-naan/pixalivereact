@@ -60,7 +60,8 @@ const StoriesPost = (props) => {
             })
         } else {
             //dummy
-            viewStory();
+            // viewStory();
+            return false;
         }
     }
 
@@ -96,6 +97,7 @@ const StoriesPost = (props) => {
             })
         } else {
             // Some Actions here if Story is not available
+            return false;
         }
     }
 
@@ -121,7 +123,8 @@ const StoriesPost = (props) => {
         );
         console.log(data)
         getStory();
-        setStory({ ...story, url: '' })
+        setStory({ ...story, url: '' });
+        viewStory();
     }
 
     const viewStory = () => setSelected((prevSetSelected) => !prevSetSelected);
@@ -138,7 +141,7 @@ const StoriesPost = (props) => {
                             <div class="stories-users">
                                 <h5>Stories</h5>
                                 <div class="my-status">
-                                    <figure><img src={props?.user?.avatar || require("../src/components/imgs/default.png")} alt /></figure>
+                                    <figure><img src={profile?.user?.avatar || require("../src/components/imgs/default.png")} alt /></figure>
                                     <span href="#" title="" class="main-btn  pix-btn-upload">
                                         Add New
                                         <input type="file" onChange={onChange} id="publisher-photo" name="postMusic" accept="All" />
@@ -180,6 +183,7 @@ const StoriesPost = (props) => {
                                             </li>
                                         )
                                     })}
+                                    <hr />
                                     <li>
                                         <figure><img src={require("./components/imgs/store2.jpg")} alt /></figure>
                                         <div class="story-user" onClick={getFollowingStories}>

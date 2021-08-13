@@ -27,7 +27,7 @@ const OtpVerify = () => {
   const OTP = localStorage.getItem('Otp');
   const val = otp.one + otp.two + otp.three + otp.four;
   const [resend, setResend] = useState(false);
-  const [seconds, setSeconds] = React.useState(10);
+  const [seconds, setSeconds] = React.useState(120);
 
 
   React.useEffect(() => {
@@ -71,7 +71,7 @@ const OtpVerify = () => {
   const keydownFunc = (e) => {
     e.preventDefault();
     var inputs = document.getElementsByTagName('input');
-    for (var i = 0; i < inputs.length; i++) {
+    for (var i = 0; i < inputs.length - 1; i++) {
       if (document.activeElement.id === inputs[i].id && i + 1 < inputs.length) {
         inputs[i + 1].focus();
         break;

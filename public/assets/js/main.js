@@ -465,6 +465,9 @@ $('.modal-popup-chat a').on('click', function () {
 });
 
 
+$('#storyModel').modal({backdrop: 'static', keyboard: false})  
+
+
 var figure = $(".video");
 var vid = figure.find("video");
 
@@ -480,3 +483,108 @@ function hoverVideo(e) {
 function hideVideo(e) {
   $('video', this).get(0).pause(); 
 }
+
+
+
+
+
+$(".create-post").on("click", function() {
+    $(this).addClass("active");
+});
+
+
+$("#create-overlay").on("click", function() {
+    $("body").addClass("create-overlay");
+});
+
+$(".close-btn").on("click", function() {
+    $("body").removeClass("create-overlay");
+    $(".create-post ").removeClass("active");
+});
+
+
+var myValue;
+
+function clickGradient(val) {
+    myValue = val;
+}
+$(".gradient-bg li").on("click", function() {
+    $(".static-section").addClass("d-none");
+    $("#bg-post").removeClass();
+    $("#bg-post").addClass("bg-post d-block  " + myValue)
+});
+
+$("#bg-post .close-icon").on("click", function() {
+    $(".static-section").removeClass("d-none");
+    $("#bg-post").removeClass();
+    $("#bg-post").addClass("bg-post");
+    $('.Disable').prop("disabled", true);
+});
+
+
+$(".modal .gradient-bg li").on("click", function() {
+    $(".modal .static-section").addClass("d-none");
+    $("#bg-post1").removeClass();
+    $("#bg-post1").addClass("bg-post d-block  " + myValue)
+});
+
+$("#bg-post1 .close-icon").on("click", function() {
+    $(".modal .static-section").removeClass("d-none");
+    $("#bg-post1").removeClass();
+    $("#bg-post1").addClass("bg-post");
+    $('.Disable').prop("disabled", true);
+});
+
+$(".enable").click(function(event) {
+    event.preventDefault();
+    $('.Disable').prop("disabled", false);
+    $('.post-btn').addClass("d-block")
+});
+
+var content_width = jQuery(window).width();
+if ((content_width) <= '576') {
+    $(".create-post").on("click", function() {
+        $(".overlay-bg").addClass("show");
+        $('body').css({
+            'overflow': 'hidden',
+        });
+    });
+    $(".overlay-bg").on("click", function() {
+        $(".overlay-bg").removeClass("show");
+        $("#bg-post").removeClass();
+        $("#bg-post").addClass("bg-post");
+        $('body').css({
+            'overflow': 'auto',
+        });
+    });
+
+}
+
+// additional input 
+$("#feeling-btn").on("click", function(){
+    $("#additional-input").addClass("feeling");
+    $("#additional-input").removeClass("place");
+    $("#additional-input").removeClass("friends");
+    var feeling_activity = $( "#additional-input .feeling-input .form-control").val()
+})
+$("#checkin-btn").on("click", function(){
+    $("#additional-input").addClass("place");
+    $("#additional-input").removeClass("feeling");
+    $("#additional-input").removeClass("friends");
+})
+$("#friends-btn").on("click", function(){
+    $("#additional-input").addClass("friends");
+    $("#additional-input").removeClass("feeling");
+    $("#additional-input").removeClass("place");
+})
+$("#icon-close").on("click", function(){
+    $("#additional-input").removeClass("friends");
+    $("#additional-input").removeClass("feeling");
+    $("#additional-input").removeClass("place");
+})
+
+
+$('#storyModel').modal({
+    backdrop: 'static',
+    keyboard: false  // to prevent closing with Esc button (if you want this too)
+})

@@ -14355,7 +14355,7 @@ ul[class~="dropdown-user-menu"] li a:hover {
 }
 
 .message-content-inner {
-  width: calc(100% - 24px);
+  width:calc(100% - 60px);
 }
 
 [class~="chats-container-inner"] [class~="message-by-headline"] h5 {

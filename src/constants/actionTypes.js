@@ -9,3 +9,5 @@ export const GETPEOPLE = 'GETPEOPLE';
 export const SUGGESTFRIEND = 'SUGGESTFRIEND'
 
 export const GETFEEDS = 'GETFEEDS';
+export const TRENDPOST = 'TRENDPOST';
+export const SETCATEGORY = 'SETCATEGORY';
