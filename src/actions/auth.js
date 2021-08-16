@@ -94,7 +94,6 @@ export const userLogin = (userData, history) => async (dispatch) => {
 
             dispatch({ type: AUTH, data })
 
-            history.push('/Home');
 
             dispatch(getUserInfo());
 
@@ -104,6 +103,7 @@ export const userLogin = (userData, history) => async (dispatch) => {
 
             dispatch(getFeeds());
 
+            history.push('/Home');
 
             // Swal.fire({
             //     icon: 'success',

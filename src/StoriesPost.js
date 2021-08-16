@@ -16,9 +16,11 @@ const StoriesPost = (props) => {
     const [story, setStory] = useState({ url: '' });
     const [video, setVideo] = useState(false);
     const [isStory, setIsStory] = useState(false);
-    const [stories, setStories] = useState();
+    const [stories, setStories] = useState([]);
     const [followingStory, setFollowingStory] = useState([]);
     console.log(followingStory);
+    console.log(stories);
+
     // const stories = [
     //     { url: 'https://picsum.photos/1080/1920', seeMore: '', header: { heading: 'Mohit Karekar', subheading: 'Posted 5h ago', profileImage: 'https://picsum.photos/1000/1000' } },
     //     { url: 'https://fsa.zobj.net/crop.php?r=dyJ08vhfPsUL3UkJ2aFaLo1LK5lhjA_5o6qEmWe7CW6P4bdk5Se2tYqxc8M3tcgYCwKp0IAyf0cmw9yCmOviFYb5JteeZgYClrug_bvSGgQxKGEUjH9H3s7PS9fQa3rpK3DN3nx-qA-mf6XN', header: { heading: 'Mohit Karekar', subheading: 'Posted 32m ago', profileImage: 'https://picsum.photos/1080/1920' } },
@@ -51,7 +53,12 @@ const StoriesPost = (props) => {
                     e['type'] = 'video';
                     e['duration'] = 1000;
                 }
-                e['header'] = { heading: e['user_id']['name'], subheading: moment(e['created_at']).fromNow(), profileImage: e['user_id']['avatar'] }
+                e['header'] = {
+                    heading: e['user_id']['name'],
+                    subheading: moment(e['created_at']).fromNow(),
+                    profileImage: e['user_id']['avatar'],
+                    seeMore: 'SeeMore',
+                }
                 if (i == CustData.length - 1) {
 
                     console.log(CustData);
@@ -70,13 +77,15 @@ const StoriesPost = (props) => {
         const { data } = await API.get(`/getStory`, { headers: { "token": `Bearer ${token}` } });
         setFollowingStory(data?.result);
     }
+
     const viewFollowStory = async (_id) => {
         const { data } = await API.get(
             `/getStoryById?user_id=${_id}`, { headers: { "token": `Bearer ${token}` } }
         );
-        viewStory();
+        setSelected(true);
         console.log(data?.stories);
         let CustData = data?.stories;
+        console.log(CustData);
         if (CustData.length > 0) {
             setIsStory(true)
             // eslint-disable-next-line array-callback-return
@@ -88,7 +97,11 @@ const StoriesPost = (props) => {
                     e['type'] = 'video';
                     e['duration'] = 1000;
                 }
-                e['header'] = { heading: e['user_id']['name'], subheading: moment(e['created_at']).fromNow(), profileImage: e['user_id']['avatar'] }
+                e['header'] = {
+                    heading: e['user_id']['name'],
+                    subheading: moment(e['created_at']).fromNow(),
+                    profileImage: e['user_id']['avatar']
+                }
                 if (i == CustData.length - 1) {
 
                     console.log(CustData);
@@ -264,9 +277,9 @@ const StoriesPost = (props) => {
                             <div class="col-lg-8" style={{ display: 'flex', justifyContent: 'center' }}>
                                 <Stories
                                     stories={stories}
-                                    defaultInterval={1500}
+                                    defaultInterval={1000}
                                     width={432}
-                                    height={768}
+                                    height={800}
                                     loop={true}
                                 />
                             </div>

@@ -85,6 +85,10 @@ import ViewAbout from './pages/ViewProfile/ViewAbout';
 import ViewFollowers from './pages/ViewProfile/ViewFollowers';
 import ViewFollowing from './pages/ViewProfile/ViewFollowing';
 import DiscoverByCategory from './DiscoverByCategory';
+import StoriesPost02 from './StoriesPost02';
+import Search from './Search';
+import SearchHash from './SearchHash';
+
 
 
 
@@ -131,14 +135,9 @@ const App = () => {
 
                <Route exact path="/resetPassword" component={ResetPassword} />
 
-               <Route path="/searchresults">
-                  <Searchresults />
-               </Route>
-
-               {/*<Route path="/otpverify">
-            <OtpVerify/>
-          </Route>*/}
-
+               <Route path="/searchresults"
+                  render={(props) => (<Searchresults userInfo={userInfo} suggest={suggestedFriends} trend={trendingPeople} />)}
+               />
 
                <Route path="/passwordsettings">
                   <Passwordsettings />
@@ -187,6 +186,12 @@ const App = () => {
                </Route>
 
                <Route path="/StoriesPost" render={(props) => (<StoriesPost {...userInfo} />)} />
+
+               <Route path="/StoriesPostTest" render={(props) => (<StoriesPost02 {...userInfo} />)} />
+
+               <Route path="/Search" render={(props) => (<Search {...userInfo} />)} />
+
+               <Route path="/SearchHash/:name/:id" render={(props) => (<SearchHash {...userInfo} />)} />
 
 
                <Route path="/createpost" render={(props) => (<CreatePost />)} />
@@ -350,3 +355,10 @@ const App = () => {
    );
 }
 export default App;
+
+
+
+
+{/*<Route path="/otpverify"> 
+            <OtpVerify/>
+          </Route>*/}

@@ -386,9 +386,8 @@ function Profile(props) {
 
                                                                 {post?.post_type === 2 &&
                                                                     <div style={{ height: '100px', width: '100%', display: 'flex', justifyContent: 'center' }}>
-                                                                        <ReactAudioPlayer
+                                                                        <audio
                                                                             src={post?.url}
-                                                                            autoPlay
                                                                             controls
                                                                         />
                                                                     </div>

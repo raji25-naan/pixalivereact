@@ -10722,6 +10722,12 @@ textarea {
   border-radius: 100%;
 }
 
+.searchType-bg {
+  border-bottom: 3px solid #f97f13;
+  padding-bottom: 10px;
+  color: #f93164;
+}
+
 .filterit:hover {
   cursor: pointer;
 }
@@ -10754,4 +10760,12 @@ textarea {
   z-index: 1;
   opacity: 1;
   color: #fff;
+}
+
+/* Added styles */
+
+.searchType {
+  color: "f9761c";
+  border-bottom: "#f9761c 3px solid" !important;
+  padding-bottom: "8px" !important;
 }

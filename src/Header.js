@@ -105,7 +105,7 @@ const Header = (props) => {
                      </div>
                   </form>
                </div> */}
-                     <a href="/Chat" className="opts_account pix-menu-icon">
+                     <a href="/searchresults" className="opts_account pix-menu-icon">
                         <i className="feather-search font-xl text-current"></i>
                         {/* <img src={ require("./components/imgs/chat.svg")}  alt="true" /> */}
                      </a>
@@ -125,7 +125,7 @@ const Header = (props) => {
                         {userInfo?.user?.username ? (
                            <>
                               <a className="opts_account" href="#">
-                                 <img src={profile?.user?.avatar || require("../src/components/imgs/default.png")} alt="true" />
+                                 <img src={userInfo?.user?.avatar || require("../src/components/imgs/default.png")} alt="true" />
                               </a>
                               <div pix-dropdown="mode:click ; animation: pix-animation-slide-bottom-small" className="dropdown-notifications rounded">
                                  <a href="/Profile">

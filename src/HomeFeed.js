@@ -299,9 +299,8 @@ const HomeFeed = (props) => {
                                     justifyContent: "center",
                                   }}
                                 >
-                                  <ReactAudioPlayer
+                                  <audio
                                     src={post?.url}
-                                    autoPlay
                                     controls
                                   />
                                 </div>
@@ -1059,3 +1058,49 @@ function checkScroll() {
 }
 window.addEventListener("scroll", checkScroll, false);
 window.addEventListener("resize", checkScroll, false);
+
+
+var audios = document.getElementsByTagName("audio"),
+  Fraction = 0.5;
+function checkScrollAudio() {
+  for (var i = 0; i < audios.length; i++) {
+    var audio = audios[i];
+
+    var x = audio.offsetLeft,
+      y = audio.offsetTop,
+      w = audio.offsetWidth,
+      h = audio.offsetHeight,
+      r = x + w, //right
+      b = y + h, //bottom
+      visibleX,
+      visibleY,
+      visible;
+
+    visibleX = Math.max(
+      0,
+      Math.min(
+        w,
+        window.pageXOffset + window.innerWidth - x,
+        r - window.pageXOffset
+      )
+    );
+    visibleY = Math.max(
+      0,
+      Math.min(
+        h,
+        window.pageYOffset + window.innerHeight - y,
+        b - window.pageYOffset
+      )
+    );
+
+    visible = (visibleX * visibleY) / (w * h);
+
+    if (visible > Fraction) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+}
+window.addEventListener("scroll", checkScrollAudio, false);
+window.addEventListener("resize", checkScrollAudio, false);
